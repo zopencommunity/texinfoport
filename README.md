@@ -1,2 +1,2 @@
-# diffutils
-GNU Diffutils is a package of several programs related to finding differences between files.
+# texinfo
+Texinfo is the official documentation format of the GNU project.
