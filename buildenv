@@ -1,0 +1,32 @@
+#!/bin/sh
+#
+# Set up environment variables for general build tool to operate
+#
+export ZOPEN_TYPE="TARBALL"
+
+export ZOPEN_TARBALL_URL="http://ftp.gnu.org/gnu/texinfo/texinfo-6.8.tar.gz"
+export ZOPEN_TARBALL_DEPS="curl gzip make perl"
+
+export ZOPEN_BOOTSTRAP=skip
+zopen_check_results()
+{
+#!/bin/sh
+#
+# Results should be 0 errors, and no more than 10 failures
+# FAIL:	 10
+# ERROR: 0
+#
+set -x
+chk="$2_check.log"
+
+failures=$(egrep '^# FAIL:' ${chk} | tail -1 | awk ' { print $3; }')
+if [ ${failures} -gt 55 ]; then
+  return 2
+fi
+errors=$(egrep '^# ERROR:' ${chk} | tail -1 | awk ' { print $3; }')
+if [ ${errors} -gt 0 ]; then
+  return 2
+fi
+
+return 1
+}
