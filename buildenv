@@ -4,30 +4,32 @@
 export ZOPEN_TYPE="TARBALL"
 
 export ZOPEN_TARBALL_URL="http://ftp.gnu.org/gnu/texinfo/texinfo-6.8.tar.gz"
-export ZOPEN_TARBALL_DEPS="curl gzip make perl"
+export ZOPEN_TARBALL_DEPS="curl gzip make perl zoslib diffutils coreutils findutils"
 
 export ZOPEN_BOOTSTRAP=skip
-export ZOPEN_CHECK="skip"
 
 #FIXME:
 zopen_check_results()
 {
-#!/bin/sh
-#
-# Results should be 0 errors, and no more than 10 failures
-# FAIL:	 10
+#============================================================================
+#Testsuite summary for GNU Texinfo 6.8
+#============================================================================
+# TOTAL: 85
+# PASS:  30
+# SKIP:  0
+# XFAIL: 0
+# FAIL:  55
+# XPASS: 0
 # ERROR: 0
 #
-chk="$1/$2_check.log"
+  dir="$1"
+  pfx="$2"
+  chk="$1/$2_check.log"
 
-failures=$(egrep '^# FAIL:' ${chk} | tail -1 | awk ' { print $3; }')
-if [ ${failures} -gt 55 ]; then
-  return 2
-fi
-errors=$(egrep '^# ERROR:' ${chk} | tail -1 | awk ' { print $3; }')
-if [ ${errors} -gt 0 ]; then
-  return 2
-fi
-
-return 1
+  totalTests=$(grep '# TOTAL:' $chk | awk '{ print $3 }')
+  actualFailures=$(grep '# FAIL:' $chk | awk '{ print $3 }')
+  expectedFailures=55
+  echo "actualFailures:${actualFailures}"
+  echo "totalTests:${totalTests}"
+  echo "expectedFailures:${expectedFailures}"
 }
