@@ -1,0 +1,20 @@
+diff --git a/info/Makefile.in b/info/Makefile.in
+index d8962c1..c71b619 100644
+--- a/info/Makefile.in
++++ b/info/Makefile.in
+@@ -1595,6 +1595,7 @@ cmd_sources = $(srcdir)/session.c $(srcdir)/echo-area.c $(srcdir)/infodoc.c \
+ BUILT_SOURCES = funs.h
+ @have_ptys_TRUE@pseudotty_SOURCES = pseudotty.c
+ TESTS = \
++	t/malformed-split.sh \
+ 	t/file.sh \
+ 	t/file-node.sh \
+ 	t/file-nodes.sh \
+@@ -1605,7 +1606,6 @@ TESTS = \
+ 	t/no-file.sh \
+ 	t/node-no-file.sh \
+ 	t/split.sh \
+-	t/malformed-split.sh \
+ 	t/relative-path.sh \
+ 	t/file-relative-path.sh \
+ 	t/dir.sh \
