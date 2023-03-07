@@ -15,9 +15,6 @@ export ZOPEN_BOOTSTRAP=skip
 
 export PERL="/bin/env perl"
 
-#FIXME: tests hang: ./t/malformed-split.sh, investigate the culprit
-export ZOPEN_CHECK=skip
-
 zopen_check_results()
 {
 #============================================================================
