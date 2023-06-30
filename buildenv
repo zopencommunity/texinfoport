@@ -39,3 +39,8 @@ zopen_check_results()
   echo "totalTests:${totalTests}"
   echo "expectedFailures:${expectedFailures}"
 }
+
+zopen_get_version()
+{
+    ./texindex/texindex --version | awk 'NR==1{print $4}'
+}
