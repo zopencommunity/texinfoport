@@ -17,27 +17,67 @@ export PERL="/bin/env perl"
 
 zopen_check_results()
 {
-#============================================================================
+
+# 
+#There are several test suites.
+#In the past, only the first suite was remarked on (and it had several failures)
+#
+#grep -A6 '^Testsuite summary'
 #Testsuite summary for GNU Texinfo 6.8
 #============================================================================
 # TOTAL: 85
-# PASS:  30
+# PASS:  85
 # SKIP:  0
 # XFAIL: 0
-# FAIL:  55
-# XPASS: 0
-# ERROR: 0
-#
+# FAIL:  0
+#--
+#Testsuite summary for GNU Texinfo 6.8
+#============================================================================
+# TOTAL: 57
+# PASS:  57
+# SKIP:  0
+# XFAIL: 0
+# FAIL:  0
+#--
+#Testsuite summary for GNU Texinfo 6.8
+#============================================================================
+# TOTAL: 0
+# PASS:  0
+# SKIP:  0
+# XFAIL: 0
+# FAIL:  0
+#--
+#Testsuite summary for GNU Texinfo 6.8
+#============================================================================
+# TOTAL: 106
+# PASS:  1
+# SKIP:  17
+# XFAIL: 0
+# FAIL:  88
   dir="$1"
   pfx="$2"
   chk="$1/$2_check.log"
+  summary="$1/$2_summary.log"
 
-  totalTests=$(grep '# TOTAL:' $chk | awk '{ print $3 }')
-  actualFailures=$(grep '# FAIL:' $chk | awk '{ print $3 }')
-  expectedFailures=55
-  echo "actualFailures:${actualFailures}"
-  echo "totalTests:${totalTests}"
+  totList=$(grep '# TOTAL:' $chk | awk '{ print $3 }')
+  actualFailureList=$(grep '# FAIL:' $chk | awk '{ print $3 }')
+
+  tot=0
+  fail=0
+  for t in $totList; do
+    tot=$((tot+t))
+  done
+  for f in $actualFailureList; do
+    fail=$((fail+f))
+  done
+  expectedFailures=88
+  echo "actualFailures:${fail}"
+  echo "totalTests:${tot}"
   echo "expectedFailures:${expectedFailures}"
+
+  echo "actualFailures:${fail}" >$summary
+  echo "totalTests:${tot}" >>$summary
+  echo "expectedFailures:${expectedFailures}" >>$summary
 }
 
 zopen_get_version()
