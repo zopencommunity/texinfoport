@@ -1,8 +1,8 @@
 diff --git a/build-aux/test-driver b/build-aux/test-driver
-index 9759384..25063e1 100755
+index 9759384..ba20d95 100755
 --- a/build-aux/test-driver
 +++ b/build-aux/test-driver
-@@ -100,10 +100,10 @@ else
+@@ -100,13 +100,13 @@ else
  fi
  
  do_exit='rm -f $log_file $trs_file; (exit $st); exit $st'
@@ -16,4 +16,8 @@ index 9759384..25063e1 100755
 +trap "st=143; $do_exit" SIGTERM
  
  # Test script is run here.
- "$@" >$log_file 2>&1
+-"$@" >$log_file 2>&1
++bash "$@" >$log_file 2>&1
+ estatus=$?
+ 
+ if test $enable_hard_errors = no && test $estatus -eq 99; then
