@@ -13,6 +13,8 @@ fi
 export ZOPEN_GIT_DEPS="git make m4 perl autoconf libtool automake xz zoslib diffutils coreutils findutils"
 export ZOPEN_BOOTSTRAP=skip
 
+export ZOPEN_CHECK_TIMEOUT=25000
+
 export PERL="/bin/env perl"
 
 zopen_check_results()
