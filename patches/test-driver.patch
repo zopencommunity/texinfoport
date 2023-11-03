@@ -1,9 +1,19 @@
 diff --git a/build-aux/test-driver b/build-aux/test-driver
-index 9759384..80c50e1 100755
+index 9759384..ba20d95 100755
 --- a/build-aux/test-driver
 +++ b/build-aux/test-driver
-@@ -106,7 +106,7 @@ trap "st=141; $do_exit" 13
- trap "st=143; $do_exit" 15
+@@ -100,13 +100,13 @@ else
+ fi
+ 
+ do_exit='rm -f $log_file $trs_file; (exit $st); exit $st'
+-trap "st=129; $do_exit" 1
+-trap "st=130; $do_exit" 2
+-trap "st=141; $do_exit" 13
+-trap "st=143; $do_exit" 15
++trap "st=129; $do_exit" SIGHUP
++trap "st=130; $do_exit" SIGINT
++trap "st=141; $do_exit" SIGPIPE
++trap "st=143; $do_exit" SIGTERM
  
  # Test script is run here.
 -"$@" >$log_file 2>&1

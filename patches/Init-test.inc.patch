@@ -1,0 +1,13 @@
+diff --git a/info/t/Init-test.inc b/info/t/Init-test.inc
+index f09d342..889b7e5 100644
+--- a/info/t/Init-test.inc
++++ b/info/t/Init-test.inc
+@@ -143,6 +143,8 @@ init_interactive_test ()
+       echo "$0: could not mkfifo pipes" >&2
+       exit 77
+     fi
++    chtag -tcISO8859-1 $pipein $pty_type
++
+     # ok, we'll proceed with the test.
+   else
+     echo "$0: mkfifo program not found - cannot make named pipes" >&2
