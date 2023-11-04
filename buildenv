@@ -61,6 +61,7 @@ zopen_check_results()
   chk="$1/$2_check.log"
   summary="$1/$2_summary.log"
 
+set -x
   totList=$(grep '# TOTAL:' $chk | awk '{ print $3 }')
   actualFailureList=$(grep '# FAIL:' $chk | awk '{ print $3 }')
 
@@ -73,6 +74,14 @@ zopen_check_results()
     fail=$((fail+f))
   done
   expectedFailures=88
+
+  groups=$(echo "$totList" | wc -w)
+
+  if [[ ${groups} -ne 4 ]]; then
+    echo "Expected 4 groups of tests to run. Forcing fail of test" >&2
+    fail=$((expectedFailures+1))
+  fi
+set +x
   echo "actualFailures:${fail}"
   echo "totalTests:${tot}"
   echo "expectedFailures:${expectedFailures}"
