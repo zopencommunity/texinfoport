@@ -10,7 +10,7 @@ export ZOPEN_GIT_URL="https://git.savannah.gnu.org/git/texinfo.git"
 if [ "${ZOPEN_TYPE}x" = "GITx" ]; then
  	export ZOPEN_BOOTSTRAP="./autogen.sh"
 fi
-export ZOPEN_GIT_DEPS="git make m4 perl autoconf libtool automake xz zoslib diffutils coreutils findutils"
+export ZOPEN_GIT_DEPS="git make m4 perl autoconf libtool automake xz zoslib diffutils coreutils autoconf help2man findutils bash"
 export ZOPEN_BOOTSTRAP=skip
 
 export ZOPEN_CHECK_TIMEOUT=25000
