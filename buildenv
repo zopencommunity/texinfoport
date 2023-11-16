@@ -1,5 +1,5 @@
 # bump: texinfo-version /TEXINFO_VERSION="(.*)"/ https://ftp.gnu.org/gnu/texinfo/|re:/href="texinfo-([\d.]+).tar.gz"/$1/|semver:*
-TEXINFO_VERSION="6.8"
+TEXINFO_VERSION="7.1"
 
 export ZOPEN_BUILD_LINE="STABLE"
 export ZOPEN_STABLE_URL="https://ftp.gnu.org/gnu/texinfo/texinfo-${TEXINFO_VERSION}.tar.gz"
