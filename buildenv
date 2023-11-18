@@ -9,7 +9,7 @@ export ZOPEN_DEV_URL="https://git.savannah.gnu.org/git/texinfo.git"
 if [ "${ZOPEN_BUILD_LINE}x" = "DEVx" ]; then
  	export ZOPEN_BOOTSTRAP="./autogen.sh"
 fi
-export ZOPEN_GIT_DEPS="git make m4 perl autoconf libtool automake xz zoslib diffutils coreutils findutils"
+export ZOPEN_GIT_DEPS="git make m4 perl autoconf libtool automake xz zoslib diffutils coreutils autoconf help2man findutils bash"
 export ZOPEN_BOOTSTRAP=skip
 
 export ZOPEN_CHECK_TIMEOUT=25000
@@ -72,6 +72,13 @@ zopen_check_results()
     fail=$((fail+f))
   done
   expectedFailures=88
+
+  groups=$(echo "$totList" | wc -w)
+
+  if [[ ${groups} -ne 4 ]]; then
+    echo "Expected 4 groups of tests to run. Forcing fail of test" >&2
+    fail=$((expectedFailures+1))
+  fi
   echo "actualFailures:${fail}"
   echo "totalTests:${tot}"
   echo "expectedFailures:${expectedFailures}"
