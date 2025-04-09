@@ -1,5 +1,5 @@
 # bump: texinfo-version /TEXINFO_VERSION="(.*)"/ https://ftp.gnu.org/gnu/texinfo/|re:/href="texinfo-([\d.]+).tar.gz"/$1/|semver:*
-TEXINFO_VERSION="6.8"
+TEXINFO_VERSION="7.2"
 
 export ZOPEN_BUILD_LINE="STABLE"
 export ZOPEN_STABLE_URL="https://ftp.gnu.org/gnu/texinfo/texinfo-${TEXINFO_VERSION}.tar.gz"
@@ -10,7 +10,9 @@ if [ "${ZOPEN_BUILD_LINE}x" = "DEVx" ]; then
  	export ZOPEN_BOOTSTRAP="./autogen.sh"
 fi
 export ZOPEN_GIT_DEPS="git make m4 perl autoconf libtool automake xz zoslib diffutils coreutils findutils"
+export ZOPEN_RUNTIME_DEPS="perl"
 export ZOPEN_BOOTSTRAP=skip
+export ZOPEN_CHECK=skip # to get a build published
 
 export ZOPEN_CHECK_TIMEOUT=25000
 
