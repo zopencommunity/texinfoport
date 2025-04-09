@@ -1,20 +1,20 @@
-diff --git a/info/Makefile.in b/info/Makefile.in
-index d8962c1..c71b619 100644
---- a/info/Makefile.in
-+++ b/info/Makefile.in
-@@ -1595,6 +1595,7 @@ cmd_sources = $(srcdir)/session.c $(srcdir)/echo-area.c $(srcdir)/infodoc.c \
- BUILT_SOURCES = funs.h
- @have_ptys_TRUE@pseudotty_SOURCES = pseudotty.c
- TESTS = \
+diff --git i/info/Makefile.in w/info/Makefile.in
+index 4f23ef2..e17c784 100644
+--- i/info/Makefile.in
++++ w/info/Makefile.in
+@@ -2116,6 +2116,7 @@ BUILT_SOURCES = funs.h
+ # Test suite
+ CLEANFILES = $(am__append_2)
+ info_tests_with_pseudotty = \
 +	t/malformed-split.sh \
- 	t/file.sh \
- 	t/file-node.sh \
- 	t/file-nodes.sh \
-@@ -1605,7 +1606,6 @@ TESTS = \
- 	t/no-file.sh \
- 	t/node-no-file.sh \
- 	t/split.sh \
+ 	t/adjust-anchors.sh \
+ 	t/all-only.sh \
+ 	t/anchor-positions.sh \
+@@ -2142,7 +2143,6 @@ info_tests_with_pseudotty = \
+ 	t/index.sh \
+ 	t/last-node-not-top-level.sh \
+ 	t/last-no-history.sh \
 -	t/malformed-split.sh \
- 	t/relative-path.sh \
- 	t/file-relative-path.sh \
- 	t/dir.sh \
+ 	t/menu-sequence.sh \
+ 	t/multiple-completions.sh \
+ 	t/next-quoted.sh \
